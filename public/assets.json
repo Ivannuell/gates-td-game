@@ -1,0 +1,19 @@
+[
+  {
+    "path": "/assets/images/",
+    "files": [
+      {
+        "type": "spritesheet",
+        "key": "cannon_1",
+        "url": "turret_01_mk1.png",
+        "frameConfig": {"frameWidth": 128, "frameHeight": 128}
+      },
+      {
+        "type": "spritesheet",
+        "key": "monster_1",
+        "url": "D_Walk.png",
+        "frameConfig": {"frameWidth": 48, "framehHight": 48}
+      }
+    ]
+  }
+]
