@@ -13,7 +13,19 @@
         "key": "monster_1",
         "url": "D_Walk.png",
         "frameConfig": {"frameWidth": 48, "framehHight": 48}
+      },
+      {
+        "type": "spritesheet",
+        "key": "bullet_red",
+        "url": "bullet1_strip.png",
+        "frameConfig": {"frameWidth": 10, "frameHeight": 10}
+      },
+      {
+        "type": "image",
+        "key": "cannon_body",
+        "url": "body_tracks.png"
       }
+
     ]
   }
 ]

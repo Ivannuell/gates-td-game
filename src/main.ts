@@ -9,10 +9,10 @@ const game = new Phaser.Game({
   pixelArt: true,
   scale: {
     parent: 'game-container',
-    width: 450,
-    height: 640,
+    width: 840,
+    height: 480,
     autoCenter: Phaser.Scale.CENTER_BOTH,
-    mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+    // mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
   },
   backgroundColor: '#000000',
   physics: {
