@@ -15,7 +15,7 @@ export class EnemyBasicSpawner {
       active: false,
     });
 
-    this.spawnInterval = 400;
+    this.spawnInterval = 200;
     this.spawnAt = 1000;
     this.disableSpawning = false;
 
@@ -63,7 +63,7 @@ export class EnemyBasicSpawner {
 
       if (enemy.x > this.scene.scale.width + 20) {
         // enemy.setActive(false);
-        enemy.destroy()
+        enemy.die()
       }
     });
   }

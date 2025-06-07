@@ -1,3 +1,4 @@
+import { HealthBasic } from "../../components/health/health-basic";
 import { HorizontalMovement } from "../../components/movements/horizontal-movement";
 
 export class EnemyBasic extends Phaser.GameObjects.Container {
@@ -5,6 +6,7 @@ export class EnemyBasic extends Phaser.GameObjects.Container {
   enemySprite: Phaser.Physics.Arcade.Sprite;
   horizontalMovementComponent!: HorizontalMovement;
   destroyed!: boolean
+  healthComponent!: HealthBasic
 
   constructor(scene: Phaser.Scene) {
     super(scene, 50, scene.scale.height / 2 - 100, []);
@@ -27,7 +29,7 @@ export class EnemyBasic extends Phaser.GameObjects.Container {
     this.add([this.enemySprite]);
 
     this.horizontalMovementComponent = new HorizontalMovement(this);
-
+    this.healthComponent = new HealthBasic(2)
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
     this.once(
       Phaser.GameObjects.Events.DESTROY,
@@ -43,6 +45,10 @@ export class EnemyBasic extends Phaser.GameObjects.Container {
   update() {
     if (this.destroyed) {
       return 
+    }
+
+    if (this.healthComponent.isDead) {
+      this.die()
     }
 
     this.horizontalMovementComponent.update();

@@ -16,11 +16,12 @@ export class BasicCannon {
 
     this.bulletGroup = this.gameObject.scene.physics.add.group({
       name: `basic-${Phaser.Math.RND.uuid}`,
+      key: "bullet_red",
       enable: false,
     });
     this.bulletGroup.createMultiple({
       key: "bullet_red",
-      quantity: 50,
+      quantity: 5,
       active: false,
       visible: false,
     });
@@ -52,6 +53,7 @@ export class BasicCannon {
 
     if (this.buttonClicked.isClicked) {
       const bullet = this.bulletGroup.getFirstDead();
+      // const bullet = this.bulletGroup.get();
       if (bullet == undefined || bullet == null) {
         return;
       }
@@ -60,9 +62,8 @@ export class BasicCannon {
       const y = this.gameObject.y;
       bullet.setSize(0.7);
       bullet.enableBody(true, x, y, true, true);
-      bullet.setBelow(this.gameObject)
+      bullet.setBelow(this.gameObject);
       bullet.setState(2);
-      
 
       this.gameObject.scene.physics.moveTo(
         bullet,
@@ -71,7 +72,7 @@ export class BasicCannon {
         500
       );
 
-      this.fireBulletInterval = 50;
+      this.fireBulletInterval = 100;
     }
   }
 
@@ -81,19 +82,25 @@ export class BasicCannon {
         return;
       }
 
-      // (bullet.state as number) -= delta;
-      // if ((bullet.state as number) <= 0) {
+      (bullet.state as number) -= delta;
+      if (
+        (bullet.state as number) <= 0 ||
+        bullet.y <= -10 ||
+        bullet.x <= -10 ||
+        bullet.x >= this.gameObject.scene.scale.width + 10
+      ) {
+        bullet.disableBody(true, true)
+        // this.destroyBullet(bullet);
+      }
+
+      // if (bullet.y <= -10) {
       //   bullet.disableBody(true, true)
       // }
-
-      if (bullet.y <= -10) {
-        bullet.disableBody(true, true)
-      }
     });
   }
 
   destroyBullet(bullet: Phaser.Types.Physics.Arcade.GameObjectWithBody) {
-    // bullet.setState(0)
-    bullet.disableBody(true, true)
+    bullet.setState(0)
+    // bullet.disableBody(true, true);
   }
 }

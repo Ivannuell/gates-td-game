@@ -4,7 +4,7 @@ export class HorizontalMovement {
 
   constructor(gameObject: Phaser.Physics.Arcade.Sprite | Phaser.GameObjects.Container) {
     this.gameObject = gameObject;
-    this.velocity = 100
+    this.velocity = 50
 
   }
 

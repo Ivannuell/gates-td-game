@@ -22,7 +22,10 @@ export class GameScene extends Phaser.Scene {
       this.player.weapon.bulletGroup,
       this.enemySpawner.group,
       (enemyComponent, bulletComponent) => {
-        (enemyComponent as EnemyBasic).die()
+        enemyComponent.healthComponent.hit()
+        if (enemyComponent.healthComponent.isDead) {
+          (enemyComponent as EnemyBasic).die()
+        }
         this.player.weapon.destroyBullet(bulletComponent as Phaser.Types.Physics.Arcade.GameObjectWithBody)
         
       }, () => true
