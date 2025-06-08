@@ -5,18 +5,18 @@ export class EnemyBasicSpawner {
   group;
   disableSpawning;
 
-  constructor(scene, enemyClass) {
+  constructor(scene, enemyClass, enemyConfig) {
     this.scene = scene;
 
     this.group = this.scene.add.group({
-      name: `${this.constructor.name}-${Phaser.Math.RND.uuid}`,
+      name: `${enemyClass.constructor.name}-${Phaser.Math.RND.uuid}`,
       classType: enemyClass,
       runChildUpdate: true,
       active: false,
     });
 
-    this.spawnInterval = 200;
-    this.spawnAt = 1000;
+    this.spawnInterval = enemyConfig.spawnInterval;
+    this.spawnAt = enemyConfig.spawnAt;
     this.disableSpawning = false;
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
@@ -46,11 +46,13 @@ export class EnemyBasicSpawner {
       return;
     }
 
-    const y = Phaser.Math.RND.between(30, this.scene.scale.height - 150);
+    const y = Phaser.Math.RND.between(100, this.scene.scale.height - 150);
     const enemy = this.group.get(-10, y);
     if (enemy) {
       enemy.setActive(true);
       enemy.setPosition(-10, y);
+      enemy.setDepth(99)
+      // enemy.play('monster_1_walk')
     }
     this.spawnAt = this.spawnInterval;
   }

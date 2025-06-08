@@ -11,13 +11,25 @@
       {
         "type": "spritesheet",
         "key": "monster_1",
-        "url": "D_Walk.png",
+        "url": "S_Walk_1.png",
+        "frameConfig": {"frameWidth": 48, "framehHight": 48}
+      },
+      {
+        "type": "spritesheet",
+        "key": "monster_2",
+        "url": "S_Walk_2.png",
         "frameConfig": {"frameWidth": 48, "framehHight": 48}
       },
       {
         "type": "spritesheet",
         "key": "bullet_red",
         "url": "bullet1_strip.png",
+        "frameConfig": {"frameWidth": 10, "frameHeight": 10}
+      },
+      {
+        "type": "spritesheet",
+        "key": "bullet_green",
+        "url": "bolt1_strip.png",
         "frameConfig": {"frameWidth": 10, "frameHeight": 10}
       },
       {

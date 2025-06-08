@@ -7,6 +7,7 @@ export class Player extends Phaser.GameObjects.Container {
   mouseComponent!: MouseInput;
   weapon: BasicCannon;
 
+
   cannonSprite: Phaser.Physics.Arcade.Sprite;
   cannonBodySprite: Phaser.GameObjects.Image;
 
@@ -15,6 +16,7 @@ export class Player extends Phaser.GameObjects.Container {
     this.scene = scene;
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
+
 
     this.mouseComponent = new MouseInput(this);
     this.weapon = new BasicCannon(this, this.mouseComponent);

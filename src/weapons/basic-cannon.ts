@@ -5,6 +5,9 @@ export class BasicCannon {
   fireBulletInterval!: number;
   bulletGroup!: Phaser.GameObjects.Group;
   buttonClicked!: MouseInput;
+  damageOutput!: number;
+  peirced!: number;
+  peirceAmmount!: number;
 
   constructor(
     gameObject: Phaser.GameObjects.Container,
@@ -12,16 +15,18 @@ export class BasicCannon {
   ) {
     this.gameObject = gameObject;
     this.fireBulletInterval = 0;
+    this.damageOutput = 2;
     this.buttonClicked = buttonClicked;
+    this.peirceAmmount = 3
+    this.peirced = 0
 
     this.bulletGroup = this.gameObject.scene.physics.add.group({
       name: `basic-${Phaser.Math.RND.uuid}`,
-      key: "bullet_red",
       enable: false,
     });
     this.bulletGroup.createMultiple({
       key: "bullet_red",
-      quantity: 5,
+      quantity: 3,
       active: false,
       visible: false,
     });
@@ -63,16 +68,18 @@ export class BasicCannon {
       bullet.setSize(0.7);
       bullet.enableBody(true, x, y, true, true);
       bullet.setBelow(this.gameObject);
-      bullet.setState(2);
+      bullet.setState(5);
 
       this.gameObject.scene.physics.moveTo(
         bullet,
         this.gameObject.scene.input.activePointer.position.x,
         this.gameObject.scene.input.activePointer.position.y,
-        500
+        800
       );
 
-      this.fireBulletInterval = 100;
+      this.fireBulletInterval = 2000;
+
+      
     }
   }
 
@@ -89,8 +96,8 @@ export class BasicCannon {
         bullet.x <= -10 ||
         bullet.x >= this.gameObject.scene.scale.width + 10
       ) {
-        bullet.disableBody(true, true)
-        // this.destroyBullet(bullet);
+        bullet.disableBody(true, true);
+        this.peirced = 0;
       }
 
       // if (bullet.y <= -10) {
@@ -100,7 +107,7 @@ export class BasicCannon {
   }
 
   destroyBullet(bullet: Phaser.Types.Physics.Arcade.GameObjectWithBody) {
-    bullet.setState(0)
+    bullet.setState(0);
     // bullet.disableBody(true, true);
   }
 }

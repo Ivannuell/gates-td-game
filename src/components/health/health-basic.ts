@@ -14,12 +14,12 @@ export class HealthBasic {
     this.isDead = false;
   }
 
-  hit() {
+  hit(damageInput: number) {
     if (this.isDead) {
       return;
     }
 
-    this.currentLIfe -= 1;
+    this.currentLIfe -= damageInput;
     if (this.currentLIfe <= 0) {
       this.isDead = true;
     }

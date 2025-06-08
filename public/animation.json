@@ -1,0 +1,14 @@
+[
+{
+  "key": "monster_1_walk",
+  "frameRate": 12,
+  "repeat": -1,
+  "assetKey": "monster_1"
+},
+{
+  "key": "monster_2_walk",
+  "frameRate": 6,
+  "repeat": -1,
+  "assetKey": "monster_2"
+}
+]
