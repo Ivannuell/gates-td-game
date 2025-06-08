@@ -13,7 +13,7 @@ export class SideCannonGroup{
   sideCannon3
   sideCannon4
 
-  constructor(scene: Phaser.Scene, enemyGroup: EnemyBasicSpawner) {
+  constructor(scene: Phaser.Scene, enemyGroup) {
 
       this.sideCannon1 = new SideCannonBasic(scene, enemyGroup,scene.scale.width / 2 - 100,scene.scale.height - 50)
       this.sideCannon2 = new SideCannonBasic(scene, enemyGroup,scene.scale.width / 2 - 200,scene.scale.height - 50)

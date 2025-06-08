@@ -39,7 +39,6 @@ export class EnemyBasic extends Phaser.GameObjects.Container {
       () => {
         this.scene.events.off(Phaser.Scenes.Events.UPDATE, this.update, this);
         this.destroyed = true
-        // this.die()
       },
       this
     );

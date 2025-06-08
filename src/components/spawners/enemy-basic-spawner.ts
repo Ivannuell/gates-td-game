@@ -1,12 +1,16 @@
+import { CUSTOM_EVENTS, EventBusComponent } from "../event-bus-emitter";
+
 export class EnemyBasicSpawner {
   scene: Phaser.Scene;
   spawnAt;
   spawnInterval;
   group;
   disableSpawning;
+  eventBus
 
-  constructor(scene, enemyClass, enemyConfig) {
+  constructor(scene, enemyClass, enemyConfig, eventBus: EventBusComponent) {
     this.scene = scene;
+    this.eventBus = eventBus
 
     this.group = this.scene.add.group({
       name: `${enemyClass.constructor.name}-${Phaser.Math.RND.uuid}`,
@@ -53,7 +57,11 @@ export class EnemyBasicSpawner {
       enemy.setPosition(-10, y);
       enemy.setDepth(99)
       // enemy.play('monster_1_walk')
+
+      this.eventBus.emit(CUSTOM_EVENTS.ENEMY_SPAWN)
     }
+
+
     this.spawnAt = this.spawnInterval;
   }
 

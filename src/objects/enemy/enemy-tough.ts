@@ -18,7 +18,7 @@ export class EnemyTough extends Phaser.GameObjects.Container {
     this.scene.physics.add.existing(this);
 
     (this.body as Phaser.Physics.Arcade.Body)
-      .setSize(32, 20)
+      .setSize(32, 50)
       .setOffset(-12, -12);
 
     this.enemySprite = this.scene.physics.add
@@ -40,7 +40,6 @@ export class EnemyTough extends Phaser.GameObjects.Container {
       () => {
         this.scene.events.off(Phaser.Scenes.Events.UPDATE, this.update, this);
         this.destroyed = true
-        // this.die()
       },
       this
     );
